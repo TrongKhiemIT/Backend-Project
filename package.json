@@ -1,0 +1,19 @@
+{
+  "name": "28tech",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "TrongKhiemIT",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
