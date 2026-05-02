@@ -1,0 +1,58 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+
+# Build / dist
+dist/
+build/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Optional: lock files (tuỳ team)
+# package-lock.json
+# yarn.lock
+
+# Temporary files
+*.tmp
+*.temp
+
+# Uploads (nếu có)
+uploads/
+
+# Database local (nếu dùng file)
+*.sqlite
+*.db
+
+# Debug
+*.log
+
+# dotenv backup
+.env.*
