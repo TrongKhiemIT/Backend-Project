@@ -1,5 +1,7 @@
 extends ../../layout/default.pug
 include ../../mixins/filter-status.pug
+include ../../mixins/search.pug
+
 
 block main
   h1 Danh sách sản phẩm 
@@ -11,21 +13,7 @@ block main
         .col-6
           +filter-status(filterStatus)
         .col-6 
-          form(id="form-search")
-            .input-group 
-              input(
-                type="text"
-                placeholder="Nhập từ khóa"
-                name="keyword"
-                class="form-control"
-                value=keyword
-              )
-              .input-group-append 
-                button(
-                  class="btn btn-success"
-                  type="submit"
-                ) Tìm
-
+          +search(keyword)
 
   .card.mb-3 
     .card-header Danh sách
@@ -60,4 +48,20 @@ block main
                 
               td
                 button(class="btn btn-warning btn-sm") Sửa
-                button(class="btn btn-danger btn-sm ml-1") Xóa  
+                button(class="btn btn-danger btn-sm ml-1") Xóa
+
+  nav 
+    ul.pagination 
+      if pagination.currentPage > 1
+        li.page-item
+          button.page-link(button-pagination=1) Trang Đầu
+        li.page-item
+          button.page-link(button-pagination=pagination.currentPage - 1) Trang trước
+      - for (var i = 1; i <= pagination.totalPage; i++)
+          li(class=`page-item ${pagination.currentPage == i ? "active" :""}`) 
+            button.page-link(button-pagination=i) #{i}
+      if pagination.currentPage < pagination.totalPage
+        li.page-item
+          button.page-link(button-pagination=pagination.currentPage + 1) Kế tiếp
+        li.page-item
+          button.page-link(button-pagination=pagination.totalPage) Trang cuối

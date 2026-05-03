@@ -1,11 +1,14 @@
 extends ../../layout/default.pug
 include ../../mixins/box-head.pug
+include ../../mixins/search.pug
 
 block main 
     .container.my-3
         .row
-            .col-12 
-                +box-head("Danh sách sản phẩm") 
+            .col-6
+                +box-head("Danh sách sản phẩm")
+            .col-6 
+                +search(keyword)
         .row 
             each item in products 
                 .col-4.mb-3 
@@ -19,3 +22,18 @@ block main
                             .inner-price-new= item.priceNew.toLocaleString('vi-VN') + ' đ'
                             .inner-price-old.text-decoration-line-through.text-muted= item.price.toLocaleString('vi-VN') + ' đ'
                             .inner-discount -#{item.discountPercentage}%
+    nav 
+        ul.pagination 
+            if pagination.currentPage > 1
+                li.page-item
+                    button.page-link(button-pagination=1) Trang Đầu
+                li.page-item
+                    button.page-link(button-pagination=pagination.currentPage - 1) Trang trước
+            - for (var i = 1; i <= pagination.totalPage; i++)
+                li(class=`page-item ${pagination.currentPage == i ? "active" :""}`) 
+                    button.page-link(button-pagination=i) #{i}
+            if pagination.currentPage < pagination.totalPage
+                li.page-item
+                    button.page-link(button-pagination=pagination.currentPage + 1) Kế tiếp
+                li.page-item
+                    button.page-link(button-pagination=pagination.totalPage) Trang cuối

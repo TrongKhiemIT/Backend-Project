@@ -1,4 +1,4 @@
-// Button status
+// Lọc trạng thái
 const btnStatus = document.querySelectorAll("[button-status]");
 if (btnStatus.length > 0) {
   let url = new URL(window.location.href);
@@ -29,5 +29,18 @@ if (formSearch) {
     }
 
     window.location.href = url.href;
+  });
+}
+
+//Phân trang
+const btnPagination = document.querySelectorAll("[button-pagination]");
+if (btnPagination) {
+  let url = new URL(window.location.href);
+  btnPagination.forEach((button) => {
+    button.addEventListener("click", () => {
+      const page = button.getAttribute("button-pagination");
+      url.searchParams.set("page", page);
+      window.location.href = url.href;
+    });
   });
 }
