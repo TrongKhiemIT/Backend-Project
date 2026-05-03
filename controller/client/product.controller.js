@@ -9,10 +9,9 @@ module.exports.index = async (req, res) => {
   });
 
   const newProduct = products.map((item) => {
-    item.priceNew = (
-      item.price -
-      item.price * (item.discountPercentage / 100)
-    ).toFixed(0);
+    item.priceNew = Math.round(
+      item.price - item.price * (item.discountPercentage / 100),
+    );
     return item;
   });
 
